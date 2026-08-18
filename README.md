@@ -17,7 +17,7 @@ O Injectio IA inspeciona documentos PDF antes do processamento por sistemas de i
   <img src="./docs/injectio-home.png" alt="Página inicial do Injectio IA" width="100%">
 </p>
 
-O que o projeto faz
+O que o projeto faz:
 
 Analisa texto visível, conteúdo oculto e metadados do PDF.
 
@@ -31,7 +31,7 @@ Gera relatório técnico em JSON.
 
 Disponibiliza interface web e API REST.
 
-Como funciona
+Como funciona:
 
 1. Envio
 
