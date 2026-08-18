@@ -1,162 +1,143 @@
 <div align="center">
-  <img src="./injectio-logo.png" alt="Injectio IA" width="520">
+  <img src="./injectio-logo.png" alt="Injectio IA" width="480">
 
-  <p><strong>Segurança documental antes que o conteúdo alcance a inteligência artificial.</strong></p>
+  <h3>Segurança documental antes que o conteúdo alcance a IA.</h3>
 
   <p>
-    <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.12">
+    <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/Streamlit-Interface-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit">
     <img src="https://img.shields.io/badge/FastAPI-API-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
-    <img src="https://img.shields.io/badge/status-em%20desenvolvimento-6D43FF?style=flat-square" alt="Status">
+    <img src="https://img.shields.io/badge/LegalTech-6D43FF?style=flat-square" alt="LegalTech">
   </p>
 </div>
 
-O Injectio IA é uma aplicação desenvolvida em Python para inspecionar documentos PDF e identificar possíveis tentativas de prompt injection. O projeto analisa texto visível, conteúdo oculto e metadados, organiza as evidências encontradas e produz uma classificação de risco auditável.
+O Injectio IA inspeciona documentos PDF antes do processamento por sistemas de inteligência artificial. A aplicação identifica possíveis tentativas de prompt injection, organiza evidências e apresenta uma classificação de risco auditável.
 
-O foco inicial são documentos jurídicos, unindo conhecimento de domínio em Direito, desenvolvimento de software e segurança aplicada a sistemas de IA.
+<p align="center">
+  <img src="./docs/injectio-home.png" alt="Página inicial do Injectio IA" width="100%">
+</p>
 
-O problema
+O que o projeto faz
 
-Um PDF aparentemente legítimo pode conter instruções criadas para induzir um modelo de IA a ignorar regras, alterar respostas ou revelar informações. O Injectio IA atua como uma camada de inspeção anterior ao processamento pelo modelo.
+Analisa texto visível, conteúdo oculto e metadados do PDF.
 
-Principais recursos
+Detecta padrões associados a instruções maliciosas.
 
-Upload e análise de documentos PDF em uma interface Streamlit
+Calcula score e nível de risco.
 
-Detecção de padrões suspeitos em texto visível
+Localiza evidências por página e categoria.
 
-Identificação de instruções em conteúdo invisível
+Gera relatório técnico em JSON.
 
-Inspeção de metadados do arquivo
+Disponibiliza interface web e API REST.
 
-Score de risco de 0 a 100
+Como funciona
 
-Classificação em baixo, médio, alto ou crítico
+1. Envio
 
-Evidências com categoria, severidade, página e trecho de origem
+2. Inspeção
 
-Relatório técnico em JSON
+3. Resultado
 
-API REST para integração
+O usuário seleciona um PDF.
 
-Avaliação com accuracy, precision, recall e F1-score
+Conteúdo, metadados e camadas ocultas são avaliados.
 
-Testes automatizados com pytest
+O sistema apresenta score, classificação e evidências.
+
+Interface
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./docs/injectio-resultado.png" alt="Resultado da inspeção"><br>
+      <sub><b>Resultado da inspeção</b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./docs/injectio-funcionamento.png" alt="Funcionamento do Injectio IA"><br>
+      <sub><b>Funcionamento e fluxo de análise</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="./docs/injectio-tecnologia.png" alt="Tecnologia e segurança" width="100%"><br>
+      <sub><b>Tecnologia e medidas de segurança</b></sub>
+    </td>
+  </tr>
+</table>
 
 Tecnologias
 
-Python
+Python · Streamlit · PyMuPDF · pypdf · FastAPI · Uvicorn · pytest
 
-Streamlit
+Executar localmente
 
-PyMuPDF e pypdf
-
-FastAPI e Uvicorn
-
-Pytest
-
-Executando localmente
-
-1. Crie o ambiente virtual
-
+git clone https://github.com/anaflaviabitu/injectio-ia.git
+cd injectio-ia
 python -m venv .venv
 
 No Windows:
 
 .venv\Scripts\activate
-
-No Linux ou macOS:
-
-source .venv/bin/activate
-
-2. Instale as dependências
-
 pip install -r requirements.txt
-
-3. Execute a interface
-
 streamlit run app.py
 
-API
+API e testes
 
+# API
 uvicorn main:app --reload
 
-Documentação interativa: http://127.0.0.1:8000/docs
-
-GET  /health
-POST /analisar-seguranca
-
-Testes
-
+# Testes
 pip install -r requirements-dev.txt
 pytest -q
 
-Avaliação do detector
+Método
 
-python avaliar_dataset.py
+Endpoint
 
-O repositório inclui 26 PDFs sintéticos para validação funcional. As métricas desse conjunto não representam desempenho garantido em documentos reais.
+Finalidade
 
-Estrutura do projeto
+GET
+
+/health
+
+Verifica a disponibilidade da API
+
+POST
+
+/analisar-seguranca
+
+Analisa um documento PDF
+
+Estrutura
+
+<details>
+<summary>Ver arquivos do projeto</summary>
 
 injectio-ia/
-├── .streamlit/
-│   └── config.toml
-├── dataset/
-├── tests/
 ├── app.py
-├── avaliar_dataset.py
+├── main.py
 ├── detector.py
 ├── extractor.py
 ├── patterns.py
-├── main.py
-├── iniciar.bat
-├── iniciar_api.bat
-├── injectio-hero.png
+├── avaliar_dataset.py
+├── dataset/
+├── tests/
+├── docs/
 ├── injectio-logo.png
-├── .gitignore
-├── README.md
+├── injectio-hero.png
 ├── requirements.txt
 └── requirements-dev.txt
 
-Categorias observadas
+</details>
 
-Instruction Override
+Observação
 
-System Prompt Injection
-
-Role Manipulation
-
-Decision Manipulation
-
-Prompt Leakage
-
-Data Exfiltration
-
-Restriction Bypass
-
-Hidden Instruction
-
-Metadata Injection
-
-Limitações
-
-O Injectio IA é um projeto experimental e não substitui revisão humana ou ferramentas especializadas de segurança. O detector atual utiliza padrões heurísticos e um conjunto sintético de validação; documentos reais podem exigir estratégias adicionais.
-
-Próximas evoluções
-
-Ampliação e diversificação do dataset
-
-Avaliação com documentos reais anonimizados
-
-Aprimoramento da análise de conteúdo ofuscado
-
-Comparação entre estratégias heurísticas e modelos de linguagem
-
-Testes de robustez e redução de falsos positivos
+Projeto experimental baseado em regras heurísticas e um dataset sintético de validação. Os resultados apoiam a análise, mas não substituem revisão humana ou ferramentas especializadas de segurança.
 
 Autora
 
-Desenvolvido por Ana Flávia de Morais Bitu 
+Ana Flávia Bitu
+
 
 GitHub: https://github.com/anaflaviabitu
