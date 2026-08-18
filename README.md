@@ -3,12 +3,23 @@
 
   <h3>Segurança documental antes que o conteúdo alcance a IA.</h3>
 
+
   <p>
     <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/Streamlit-Interface-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit">
     <img src="https://img.shields.io/badge/FastAPI-API-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
     <img src="https://img.shields.io/badge/LegalTech-6D43FF?style=flat-square" alt="LegalTech">
   </p>
+
+  <p>
+  <a href="https://injectio-ia.streamlit.app">
+    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Abrir demonstração">
+  </a>
+</p>
+
+<p>
+  <a href="https://injectio-ia.streamlit.app"><strong>🚀 Acessar demonstração online</strong></a>
+</p>
 </div>
 
 O Injectio IA inspeciona documentos PDF antes do processamento por sistemas de inteligência artificial. A aplicação identifica possíveis tentativas de prompt injection, organiza evidências e apresenta uma classificação de risco auditável.
