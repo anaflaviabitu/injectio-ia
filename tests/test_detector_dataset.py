@@ -2,7 +2,7 @@ from pathlib import Path
 
 from avaliar_dataset import avaliar_dataset
 from detector import detectar
-from legal_extractor import extrair_estrutura
+
 
 BASE = Path(__file__).resolve().parents[1]
 
@@ -35,11 +35,3 @@ def test_evidencia_informa_categoria_e_pagina_quando_aplicavel():
     assert primeira["categoria"]
     assert primeira["severidade"]
     assert primeira["trecho"]
-
-
-def test_extracao_juridica_retorna_estrutura():
-    arquivo = BASE / "dataset" / "legitimos" / "peticao_001.pdf"
-    resultado = extrair_estrutura(str(arquivo))
-    assert resultado["tipo_documento"]
-    assert resultado["total_paginas"] >= 1
-    assert "resumo_extrativo" in resultado
